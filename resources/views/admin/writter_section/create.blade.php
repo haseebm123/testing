@@ -11,7 +11,7 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{ route('writter.store') }}" novalidate
+                            <form class="form-horizontal" action="{{ route('writer.store') }}" novalidate
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="row">

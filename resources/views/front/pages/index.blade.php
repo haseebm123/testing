@@ -1,4 +1,6 @@
 @extends('front.layout.layout')
+@section('title','Home')
+
 @section('content')
     @php
         $section2_bg_image = $section->bg_image ?? null;
@@ -167,7 +169,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="pills-home-tab" data-toggle="pill"
                                     data-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">Writter</button>
+                                    aria-selected="true">Writer</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-profile-tab" data-toggle="pill"

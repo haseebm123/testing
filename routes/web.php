@@ -32,7 +32,7 @@ use App\Http\Controllers\User\UserController as UController;
 |
 */
 Route::get('/',[FrontController::class,'index'])->name('web.home');
-Route::get('/writter',[FrontController::class,'write'])->name('web.write');
+Route::get('/writer',[FrontController::class,'write'])->name('web.write');
 Route::get('/professor',[FrontController::class,'professor'])->name('web.professor');
 Route::get('/human',[FrontController::class,'human'])->name('web.human');
 
@@ -83,9 +83,9 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
     Route::get('professor-change-status',[ProfessorSectionController::class,'change_status'])->name('professor-change-status');
     Route::get('professor/delete', [ProfessorSectionController::class,'delete'])->name('professor.del');
 
-    Route::resource('writter', WritterSectionController::class);
-    Route::get('writter-change-status',[WritterSectionController::class,'change_status'])->name('writter-change-status');
-    Route::get('writter/delete', [ProfessorSectionController::class,'delete'])->name('writter.del');
+    Route::resource('writer', WritterSectionController::class);
+    Route::get('writer-change-status',[WritterSectionController::class,'change_status'])->name('writer-change-status');
+    Route::get('writer/delete', [ProfessorSectionController::class,'delete'])->name('writer.del');
 
     Route::resource('section2', SectionController::class);
     Route::get('section2-change-status',[SectionController::class,'change_status'])->name('section2-change-status');

@@ -12,7 +12,7 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{ route('writter.update',$data->id) }}" novalidate
+                            <form class="form-horizontal" action="{{ route('writer.update',$data->id) }}" novalidate
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
                                 @method("PATCH")

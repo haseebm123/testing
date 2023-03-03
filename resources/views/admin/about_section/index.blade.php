@@ -13,10 +13,10 @@
         <div class="row">
         <div class="col-12">
          <div class="card">
-            {{-- <div class="card-header">
-             <a class="btn btn-success" href="{{ route('about.create') }}"> Create New User</a>
-
-            </div> --}}
+            <div class="card-header">
+                <h1>About Section</h1>
+             {{-- <a class="btn btn-success" href="{{ route('about.create') }}"> Create New User</a> --}}
+            </div>
             <!-- /.card-header -->
             <div class="card-body ">
             <table class="table table-striped dataex-html5-selectors" >

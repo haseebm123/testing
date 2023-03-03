@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard analytics - Vuexy - Bootstrap HTML admin template</title>
+    <title>Dashboard </title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -65,9 +65,13 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
-    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+{{-- <body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout"> --}}
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
 
+     @php
+        $date = Date('Y')
+    @endphp
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-dark navbar-shadow">
         <div class="navbar-wrapper">
@@ -129,7 +133,7 @@
         <li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer"><a
                 class="d-flex align-items-center justify-content-between w-100 py-50">
                 <div class="d-flex justify-content-start"><span
-                        class="mr-75 feather icon-alert-circle"></span><span>No
+                        class="mr-75 feather icon-alert-octagon"></span><span>No
                         results found.</span></div>
             </a></li>
     </ul>
@@ -169,46 +173,46 @@
                     </a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'users.index') active @endif"><a href="{{ route('users.index') }}"><i
+                <li class="nav-item @if (Route::currentRouteName() == 'users.index' || Route::currentRouteName() == 'users.edit'  || Route::currentRouteName() == 'users.show') active @endif"><a href="{{ route('users.index') }}"><i
                             class="feather icon-user"></i><span class="menu-item" data-i18n="List">User</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'home_section.index') active @endif"><a
+                <li class="nav-item @if (Route::currentRouteName() == 'home_section.index' || Route::currentRouteName() == 'home_section.edit'  || Route::currentRouteName() == 'home_section.show') active @endif"><a
                         href="{{ route('home_section.index') }}"><i class="feather icon-home"></i><span
                             class="menu-item" data-i18n="List">Home Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'about.index') active @endif"><a href="{{ route('about.index') }}"><i
-                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">About
+                <li class="nav-item @if (Route::currentRouteName() == 'about.index' || Route::currentRouteName() == 'about.edit'  || Route::currentRouteName() == 'about.show') active @endif"><a href="{{ route('about.index') }}"><i
+                            class="feather icon-octagon"></i><span class="menu-item" data-i18n="List">About
                             Section</span></a>
                 </li>
-                <li class="@if (Route::currentRouteName() == 'blog.index') active @endif"><a href="{{ route('blog.index') }}"><i
-                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Blog
+                <li class="nav-item @if (Route::currentRouteName() == 'blog.index' || Route::currentRouteName() == 'blog.edit'  || Route::currentRouteName() == 'blog.show') active @endif"><a href="{{ route('blog.index') }}"><i
+                            class="fa fa-pencil-square-o"></i><span class="menu-item" data-i18n="List">Blog
                             Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'human.index') active @endif"><a href="{{ route('human.index') }}"><i
-                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Human
+                <li class="nav-item @if (Route::currentRouteName() == 'human.index' || Route::currentRouteName() == 'human.edit'  || Route::currentRouteName() == 'human.show') active @endif"><a href="{{ route('human.index') }}"><i
+                            class="fa fa-users "></i><span class="menu-item" data-i18n="List">Human
                             Section</span></a>
                 </li>
-                <li class="@if (Route::currentRouteName() == 'professor.index') active @endif"><a
-                        href="{{ route('professor.index') }}"><i class="feather icon-circle"></i><span
+                <li class="nav-item @if (Route::currentRouteName() == 'professor.index' || Route::currentRouteName() == 'professor.edit'  || Route::currentRouteName() == 'professor.show') active @endif"><a
+                        href="{{ route('professor.index') }}"><i class="fa fa-book"></i><span
                             class="menu-item" data-i18n="List">Professor Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'section2.index') active @endif"><a
-                        href="{{ route('section2.index') }}"><i class="feather icon-circle"></i><span
+                <li class="nav-item @if (Route::currentRouteName() == 'section2.index' || Route::currentRouteName() == 'section2.edit'  || Route::currentRouteName() == 'section2.show') active @endif"><a
+                        href="{{ route('section2.index') }}"><i class="fa fa-clone"></i><span
                             class="menu-item" data-i18n="List">Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'writter.index') active @endif"><a href="{{ route('writter.index') }}"><i
-                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Writter
+                <li class="nav-item @if (Route::currentRouteName() == 'writer.index' || Route::currentRouteName() == 'writer.edit'  || Route::currentRouteName() == 'writer.show') active @endif"><a href="{{ route('writer.index') }}"><i
+                            class="fa fa-pencil "></i><span class="menu-item" data-i18n="List">Writer
                             Section</span></a>
                 </li>
 
 
-                <li class="@if (Route::currentRouteName() == 'footer.index') active @endif"><a href="{{ route('footer.index') }}"><i
-                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Footer
+                <li class="nav-item @if (Route::currentRouteName() == 'footer.index' || Route::currentRouteName() == 'footer.edit'  || Route::currentRouteName() == 'footer.show') active @endif"><a href="{{ route('footer.index') }}"><i
+                            class="feather icon-octagon"></i><span class="menu-item" data-i18n="List">Footer
                             Section</span></a>
                 </li>
 
@@ -245,8 +249,8 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix blue-grey lighten-2 mb-0"><span
-                class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2019<a
-                    class="text-bold-800 grey darken-2" href="#!" target="_blank">Pixinvent,</a>All rights
+                class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; {{ $date }}<a
+                    class="text-bold-800 grey darken-2" href="#!" target="_blank">{{ $footer->name??null }},</a>All rights
                 Reserved</span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i
                     class="feather icon-heart pink"></i></span>
             <button class="btn btn-primary btn-icon scroll-top" type="button"><i
@@ -323,10 +327,11 @@
 
     <script>
         $(document).ready(function() {
-            $('.buttons-print').addClass('d-none');
-            $('.buttons-copy').addClass('d-none');
-            $('.buttons-print').addClass('d-none');
+            // $('.buttons-print').addClass('d-none');
+            // $('.buttons-copy').addClass('d-none');
+            // $('.buttons-print').addClass('d-none');
 
+             $('#DataTables_Table_0_wrapper').children('.dt-buttons').addClass('d-none');
 
         });
         $(document).ready(function() {

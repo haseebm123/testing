@@ -58,9 +58,9 @@
 
 
                                 <div class="col-12">
-                                    <a href="{{ route('writter.edit', $data->id) }}" class="btn btn-primary mr-1"><i
+                                    <a href="{{ route('writer.edit', $data->id) }}" class="btn btn-primary mr-1"><i
                                             class="feather icon-edit-1"></i> Edit</a>
-                                    {{-- <form method="post" action="{{ route('writter.destroy', $data->id) }}"
+                                    {{-- <form method="post" action="{{ route('writer.destroy', $data->id) }}"
                                         style="margin-top: -38px;margin-left: 150px";>
                                         @csrf
                                         @method('delete')

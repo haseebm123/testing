@@ -57,7 +57,7 @@ class WritterSectionController extends Controller
         }
         $data = WritterSection::create($input);
 
-        return redirect()->route('writter.index')->with(['message'=>'Section created successfully','type'=>'success']);
+        return redirect()->route('writer.index')->with(['message'=>'Section created successfully','type'=>'success']);
     }
 
     /**
@@ -110,7 +110,7 @@ class WritterSectionController extends Controller
         $data = WritterSection::find($id);
 
         $data->update($input);
-        return redirect()->route('writter.index')->with(['message'=>'Section created successfully','type'=>'success']);
+        return redirect()->route('writer.index')->with(['message'=>'Section update successfully','type'=>'success']);
 
     }
 
@@ -123,7 +123,7 @@ class WritterSectionController extends Controller
     public function destroy($id)
     {
         WritterSection::find($id)->delete();
-        return redirect()->route('writter.index')
+        return redirect()->route('writer.index')
                         ->with(['message'=>'Section delete successfully','type'=>'success']);
     }
 

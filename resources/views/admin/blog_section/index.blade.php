@@ -13,7 +13,8 @@
         <div class="row">
         <div class="col-12">
          <div class="card">
-            <div class="card-header">
+             <div class="card-header">
+                <h1>Blog Section</h1>
              <a class="btn btn-success" href="{{ route('blog.create') }}"> Create New Blog</a>
 
             </div>

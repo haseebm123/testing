@@ -13,10 +13,11 @@
         <div class="row">
         <div class="col-12">
          <div class="card">
-            {{-- <div class="card-header">
-             <a class="btn btn-success" href="{{ route('writter.create') }}"> Create New User</a>
+            <div class="card-header">
+                <h1>Writer Section</h1>
+             {{-- <a class="btn btn-success" href="{{ route('writer.create') }}"> Create New User</a> --}}
 
-            </div> --}}
+            </div>
             <!-- /.card-header -->
             <div class="card-body">
             <table class="table table-striped dataex-html5-selectors" >
@@ -52,10 +53,10 @@
                     </td>
 
                     <td>
-                      <a   href="{{ route('writter.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
-                       <a   href="{{ route('writter.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
+                      <a   href="{{ route('writer.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
+                       <a   href="{{ route('writer.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      {{-- <form method="post" action="{{route('writter.destroy',$item->id)}}" style="margin-top: -30px; margin-left: 10px;";>
+                      {{-- <form method="post" action="{{route('writer.destroy',$item->id)}}" style="margin-top: -30px; margin-left: 10px;";>
                          @csrf
                          @method('delete')
                           <button type="submit"   onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
@@ -105,7 +106,7 @@
     else
         var status=0;
     $.ajax({
-        url : "{{route('writter-change-status')}}",
+        url : "{{route('writer-change-status')}}",
         type: 'GET',
         /*dataType: 'json',*/
         data: {'id': this.id,'status':status},
