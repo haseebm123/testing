@@ -1,4 +1,5 @@
 @extends('front.layout.layout')
+@section('title','Human')
 @section('content')
 <section id="line">
     <div class="container">

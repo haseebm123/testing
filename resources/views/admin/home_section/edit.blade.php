@@ -12,10 +12,10 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{ route('home_section.update',$data->id) }}" novalidate
+                            <form class="form-horizontal" action="{{ route('home_section.update', $data->id) }}" novalidate
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
-                                @method("PATCH")
+                                @method('PATCH')
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -34,6 +34,9 @@
                                                     value="{{ $data->name ?? null }}" placeholder="Name">
                                             </div>
                                         </div>
+                                        @php
+                                            $img = $data->image??null;
+                                        @endphp
                                         <div class="form-group">
                                             <label>Image</label>
                                             <div class="controls">
@@ -41,11 +44,19 @@
                                                     value="{{ $data->image ?? null }}" placeholder="Image">
                                             </div>
                                         </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <img src='{{ asset("documents/home_section/$img") }}'
+                                                width="200px"
+                                                    alt="">
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label>Body</label>
                                             <div class="controls">
-                                                <textarea name="body" class="form-control editor" id="basicTextarea" rows="3"
-                                                      placeholder="Textarea" style="height: 325px;">{{ $data->body ?? null }}</textarea>
+                                                <textarea name="body" class="form-control editor" id="basicTextarea" rows="3" placeholder="Textarea"
+                                                    style="height: 325px;">{{ $data->body ?? null }}</textarea>
                                             </div>
                                         </div>
 

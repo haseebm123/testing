@@ -13,10 +13,10 @@
         <div class="row">
         <div class="col-12">
          <div class="card">
-            <div class="card-header">
-            @can('user-create')
-             <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
-            @endcan
+            <div class="card-header ">
+
+             <a class="btn btn-success" href="{{ route('users.create') }}"> Add Name User</a>
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -53,14 +53,14 @@
                     </td>
 
                     <td>
-                      <a class="btn btn-info" href="{{ route('users.show',$user->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
-                       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
+                      <a   href="{{ route('users.show',$user->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
+                       <a   href="{{ route('users.edit',$user->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <form method="post" action="{{route('users.destroy',$user->id)}}" style="margin-top: -38px;margin-left: 150px";>
+                      {{-- <form method="post" action="{{route('users.destroy',$user->id)}}" style="margin-top: -30px;margin-left: 10px";>
                          @csrf
                          @method('delete')
-                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
-                       </form>
+                          <button type="submit"  onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
+                       </form> --}}
                     </td>
                   </tr>
                   @empty

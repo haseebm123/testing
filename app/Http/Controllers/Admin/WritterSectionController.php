@@ -126,6 +126,14 @@ class WritterSectionController extends Controller
         return redirect()->route('writter.index')
                         ->with(['message'=>'Section delete successfully','type'=>'success']);
     }
+
+    public function delete($id)
+    {
+         WritterSection::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
+
     public function change_status(Request $request)
     {
 

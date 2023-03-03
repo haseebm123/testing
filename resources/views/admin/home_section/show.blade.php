@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <div class="card-title">Account</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body page-users-view">
                             <div class="row">
                                 <div class="users-view-image">
                                     @if (isset($data->image))
@@ -30,19 +30,19 @@
                                     <table>
 
                                             <tr>
-                                                <td class="font-weight-bold">Title :</td>
+                                                <td class="font-weight-bold">Title </td>
                                                 <td>{{ $data->title??null }}</td>
                                             </tr>
 
 
                                             <tr>
-                                                <td class="font-weight-bold">Name :</td>
+                                                <td class="font-weight-bold">Name </td>
                                                 <td>{{ $data->name??null }}</td>
                                             </tr>
 
 
                                             <tr>
-                                                <td class="font-weight-bold">Body :</td>
+                                                <td class="font-weight-bold">Body </td>
                                                 <td>{{ $data->body??null }}</td>
                                             </tr>
 
@@ -52,14 +52,14 @@
                                 <div class="col-12">
                                     <a href="{{ route('home_section.edit', $data->id) }}" class="btn btn-primary mr-1"><i
                                             class="feather icon-edit-1"></i> Edit</a>
-                                    <form method="post" action="{{ route('home_section.destroy', $data->id) }}"
+                                    {{-- <form method="post" action="{{ route('home_section.destroy', $data->id) }}"
                                         style="margin-top: -38px;margin-left: 150px";>
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-outline-danger"
                                             onclick="return confirm('Are You Sure Want To Delete This..??')"
                                             class="btn btn-default generalsetting_admin"><i class="feather icon-trash-2"></i>Delete</button>
-                                    </form>
+                                    </form> --}}
 
                                 </div>
                             </div>

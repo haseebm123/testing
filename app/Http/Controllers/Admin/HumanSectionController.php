@@ -131,6 +131,13 @@ class HumanSectionController extends Controller
                         ->with(['message'=>'Section delete successfully','type'=>'success']);
     }
 
+    public function delete($id)
+    {
+         HumanSection::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
+
     public function change_status(Request $request)
     {
         $statusChange = HumanSection::where('id',$request->id)->update(['status'=>$request->status]);

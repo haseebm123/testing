@@ -2,7 +2,7 @@
 
 @section('header-script')
 <style type="text/css">
-  
+
 </style>
 @endsection
 
@@ -10,7 +10,7 @@
 
 <section id="dashboard-analytics">
                     <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="card bg-analytics text-white">
                                 <div class="card-content">
                                     <div class="card-body text-center">
@@ -22,14 +22,14 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <h1 class="mb-2 text-white">Congratulations John,</h1>
-                                            <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p>
+                                            <h1 class="mb-2 text-white">WELLCOME TO ADMIN DASHBOARD ,</h1>
+                                            <p class="m-auto w-75">{{ auth()->user()->first_name??null }}-{{ auth()->user()->last_name??null }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-12">
+                        {{-- <div class="col-lg-3 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex flex-column align-items-start pb-0">
                                     <div class="avatar bg-rgba-primary p-50 m-0">
@@ -60,9 +60,9 @@
                                     <div id="orders-received-chart"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="card">
                                 <div class="card-content">
@@ -168,9 +168,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                  
-                  
+                    </div> --}}
+
+
                 </section>
 @endsection
 

@@ -129,6 +129,13 @@ class HomeSectionController extends Controller
                         ->with(['message'=>'Home Section delete successfully','type'=>'success']);
     }
 
+    public function delete($id)
+    {
+         HomeSection::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
+
     public function change_status(Request $request)
     {
         $statusChange = HomeSection::where('id',$request->id)->update(['status'=>$request->status]);

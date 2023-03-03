@@ -12,10 +12,10 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{ route('section2.update',$data->id) }}" novalidate
+                            <form class="form-horizontal" action="{{ route('section2.update', $data->id) }}" novalidate
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
-                                @method("PATCH")
+                                @method('PATCH')
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -41,20 +41,36 @@
                                                     value="{{ $data->image ?? null }}" placeholder="Image">
                                             </div>
                                         </div>
+                                        @php
+                                            $img = $data->image ?? null;
+                                        @endphp
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <img src='{{ asset("documents/section2/$img") }}' width="200px"
+                                                    alt="">
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label>Background Image</label>
                                             <div class="controls">
                                                 <input type="file" name="bg_image" class="form-control"
-                                                value="{{ $data->bg_image ?? null }}"
-
-                                                    placeholder="Background Image">
+                                                    value="{{ $data->bg_image ?? null }}" placeholder="Background Image">
+                                            </div>
+                                        </div>
+                                        @php
+                                            $img1 = $data->bg_image ?? null;
+                                        @endphp
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <img src='{{ asset("documents/section2/$img1") }}' width="200px"
+                                                    alt="">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Body</label>
                                             <div class="controls">
-                                                <textarea name="body" class="form-control editor" id="basicTextarea" rows="3"
-                                                      placeholder="Textarea" style="height: 325px;">{{ $data->body ?? null }}</textarea>
+                                                <textarea name="body" class="form-control editor" id="basicTextarea" rows="3" placeholder="Textarea"
+                                                    style="height: 325px;">{{ $data->body ?? null }}</textarea>
                                             </div>
                                         </div>
 

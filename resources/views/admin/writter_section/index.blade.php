@@ -25,8 +25,8 @@
                     <th>No</th>
 
                     <th>Name</th>
-                    <th>Body</th>
-                    <th>Additional Information</th>
+                    {{-- <th>Body</th>
+                    <th>Additional Information</th> --}}
                     <th>Image</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -39,8 +39,8 @@
                     <td>{{ $key+1 }}</td>
 
                     <td>{{ $item->name??null }}</td>
-                    <td>{!! $item->body??null !!}</td>
-                    <td>{!! $item->add_info??null !!}</td>
+                    {{-- <td>{!! $item->body??null !!}</td>
+                    <td>{!! $item->add_info??null !!}</td> --}}
                     <td><img class="round" src='{{ asset("documents/writter_section/$item->image??null") }}' alt="avatar" height="40" width="40"></td>
                     <td>
                       <div class="form-group">
@@ -52,14 +52,14 @@
                     </td>
 
                     <td>
-                      <a class="btn btn-info" href="{{ route('writter.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
-                       <a class="btn btn-primary" href="{{ route('writter.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
+                      <a   href="{{ route('writter.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
+                       <a   href="{{ route('writter.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <form method="post" action="{{route('writter.destroy',$item->id)}}" style="margin-top: -38px;margin-left: 150px";>
+                      {{-- <form method="post" action="{{route('writter.destroy',$item->id)}}" style="margin-top: -30px; margin-left: 10px;";>
                          @csrf
                          @method('delete')
-                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
-                       </form>
+                          <button type="submit"   onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
+                       </form> --}}
                     </td>
                   </tr>
                   @empty

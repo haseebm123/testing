@@ -131,4 +131,11 @@ class UserController extends Controller
         return redirect()->route('users.index')
                         ->with(['message'=>'User delete successfully','type'=>'success']);
     }
+
+    public function delete($id)
+    {
+         User::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
 }

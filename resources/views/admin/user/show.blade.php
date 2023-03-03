@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <div class="card-title">Account</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body page-users-view">
                             <div class="row">
                                 <div class="users-view-image">
                                     <img src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}"
@@ -67,14 +67,14 @@
                                 <div class="col-12">
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary mr-1"><i
                                             class="feather icon-edit-1"></i> Edit</a>
-                                    <form method="post" action="{{ route('users.destroy', $user->id) }}"
+                                    {{-- <form method="post" action="{{ route('users.destroy', $user->id) }}"
                                         style="margin-top: -38px;margin-left: 150px";>
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-outline-danger"
                                             onclick="return confirm('Are You Sure Want To Delete This..??')"
                                             class="btn btn-default generalsetting_admin"><i class="feather icon-trash-2"></i>Delete</button>
-                                    </form>
+                                    </form> --}}
 
                                 </div>
                             </div>

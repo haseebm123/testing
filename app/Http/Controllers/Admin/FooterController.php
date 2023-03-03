@@ -117,6 +117,13 @@ class FooterController extends Controller
                         ->with(['message'=>'Section delete successfully','type'=>'success']);
     }
 
+    public function delete($id)
+    {
+         FooterSection::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
+
     public function change_status(Request $request)
     {
         $statusChange = FooterSection::where('id',$request->id)->update(['status'=>$request->status]);

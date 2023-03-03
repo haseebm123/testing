@@ -15,11 +15,11 @@
                         <div class="card-header">
                             <div class="card-title">Account</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body page-users-view">
                             <div class="row">
-                                <div class="users-view-image">
+                                <div class="users-view-image ">
                                     @if (isset($data->image))
-                                        <img src='{{ asset("documents/professor_section/$item->image") }}'
+                                        <img src='{{ asset("documents/professor_section/$data->image") }}'
                                         class="users-avatar-shadow w-100 rounded mb-2 pr-2 ml-1" alt="Home Image">
 
                                     @endif
@@ -27,21 +27,19 @@
                                 <div class="col-12 col-sm-9 col-md-6 col-lg-5">
                                     <table>
 
-
-
                                             <tr>
-                                                <td class="font-weight-bold">Name :</td>
+                                                <td class="font-weight-bold">Name </td>
                                                 <td>{{ $data->name??null }}</td>
                                             </tr>
 
 
                                             <tr>
-                                                <td class="font-weight-bold">Body :</td>
+                                                <td class="font-weight-bold">Body </td>
                                                 <td>{!! $data->body??null !!}</td>
                                             </tr>
                                             <tr>
-                                                <td class="font-weight-bold">Additional Information :</td>
-                                                <td>{!! $data->add_info??null !!}</td>
+                                                <td class="font-weight-bold">Additional Information </td>
+                                                <td>{{ $data->add_info??null }}</td>
                                             </tr>
 
                                     </table>
@@ -50,14 +48,14 @@
                                 <div class="col-12">
                                     <a href="{{ route('professor.edit', $data->id) }}" class="btn btn-primary mr-1"><i
                                             class="feather icon-edit-1"></i> Edit</a>
-                                    <form method="post" action="{{ route('human.destroy', $data->id) }}"
+                                    {{-- <form method="post" action="{{ route('human.destroy', $data->id) }}"
                                         style="margin-top: -38px;margin-left: 150px";>
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-outline-danger"
                                             onclick="return confirm('Are You Sure Want To Delete This..??')"
                                             class="btn btn-default generalsetting_admin"><i class="feather icon-trash-2"></i>Delete</button>
-                                    </form>
+                                    </form> --}}
 
                                 </div>
                             </div>

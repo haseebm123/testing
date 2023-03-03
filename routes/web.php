@@ -60,22 +60,41 @@ Route::controller(\App\Http\Controllers\Admin\AdminController::class)->group(fun
 Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
 {
     Route::resource('users', UserController::class);
+    Route::get('users/delete', [UserController::class,'delete'])->name('users.del');
+
+
     Route::resource('home_section', HomeSectionController::class);
-    Route::resource('about', AboutSectionController::class);
+    Route::get('home/delete', [HomeSectionController::class,'delete'])->name('home.del');
     Route::get('home-change-status',[HomeSectionController::class,'change_status'])->name('home-change-status');
+
+    Route::resource('about', AboutSectionController::class);
+    Route::get('about/delete', [AboutSectionController::class,'delete'])->name('about.del');
     Route::get('about-change-status',[AboutSectionController::class,'change_status'])->name('about-change-status');
+
     Route::resource('blog', BlogSectionController::class);
     Route::get('blog-change-status',[BlogSectionController::class,'change_status'])->name('blog-change-status');
+    Route::get('blog/delete', [BlogSectionController::class,'delete'])->name('blog.del');
+
     Route::resource('human', HumanSectionController::class);
     Route::get('human-change-status',[HumanSectionController::class,'change_status'])->name('human-change-status');
+    Route::get('human/delete', [HumanSectionController::class,'delete'])->name('human.del');
+
     Route::resource('professor', ProfessorSectionController::class);
     Route::get('professor-change-status',[ProfessorSectionController::class,'change_status'])->name('professor-change-status');
+    Route::get('professor/delete', [ProfessorSectionController::class,'delete'])->name('professor.del');
+
     Route::resource('writter', WritterSectionController::class);
     Route::get('writter-change-status',[WritterSectionController::class,'change_status'])->name('writter-change-status');
+    Route::get('writter/delete', [ProfessorSectionController::class,'delete'])->name('writter.del');
+
     Route::resource('section2', SectionController::class);
     Route::get('section2-change-status',[SectionController::class,'change_status'])->name('section2-change-status');
+    Route::get('section2/delete', [ProfessorSectionController::class,'delete'])->name('section2.del');
+
     Route::resource('footer', FooterController::class);
     Route::get('footer-change-status',[FooterController::class,'change_status'])->name('footer-change-status');
+    Route::get('footer/delete', [ProfessorSectionController::class,'delete'])->name('section2.del');
+
 
    Route::controller(AdminController::class)->group(function ()
     {

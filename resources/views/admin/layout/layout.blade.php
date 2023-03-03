@@ -28,7 +28,6 @@
         href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('app-assets/css/plugins/forms/validation/form-validation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/app-user.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/editors/quill/katex.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css') }}">
@@ -48,11 +47,12 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/app-user.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/dashboard-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/card-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/tour/tour.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/css/toastr.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/app-user.css') }}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -89,7 +89,7 @@
                                         {{ auth()->user()->last_name }}</span><span
                                         class="user-status">Available</span>
                                 </div><span><img class="round"
-                                        src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar"
+                                        src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar"
                                         height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -127,11 +127,11 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}">
+                {{-- <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}">
                         <div class="brand-logo"></div>
-                        <h2 class="brand-text mb-0">Vuexy</h2>
-                    </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
+                        <h2 class="brand-text mb-0"></h2>
+                    </a></li> --}}
+                <li class="nav-item nav-toggle d-none"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
                             class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary"
                             data-ticon="icon-disc"></i></a></li>
@@ -140,147 +140,63 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title"
+                {{-- <ul class="menu-content">
+                    <li class="@if (Route::currentRouteName() == 'dashboard') active @endif"><a
+                            href="{{ route('dashboard') }}"><i class="feather icon-home"></i><span
+                                class="menu-item" data-i18n="Analytics">Dashboard</span></a>
+                    </li>
+
+                </ul> --}}
+                <li class="nav-item @if (Route::currentRouteName() == 'dashboard') active @endif"><a href="{{ route('dashboard') }}"><i class="feather icon-clipboard"></i><span class="menu-title"
                             data-i18n="Dashboard">Dashboard</span><span
                             class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'dashboard') active @endif"><a
-                                href="{{ route('dashboard') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="Analytics">Dashboard</span></a>
-                        </li>
-
-                    </ul>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">User</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'users.index') active @endif"><a
-                                href="{{ route('users.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        <li class="@if (Route::currentRouteName() == 'users.create') active @endif"><a
-                                href="{{ route('users.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li>
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'users.index') active @endif"><a
+                        href="{{ route('users.index') }}"><i class="feather icon-user"></i><span
+                            class="menu-item" data-i18n="List">User</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Home Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'home_section.index') active @endif"><a
-                                href="{{ route('home_section.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'home_section.create') active @endif"><a
-                                href="{{ route('home_section.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">About Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'about.index') active @endif"><a
-                                href="{{ route('about.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'about.create') active @endif"><a
-                                href="{{ route('about.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'home_section.index') active @endif"><a
+                    href="{{ route('home_section.index') }}"><i class="feather icon-home"></i><span
+                    class="menu-item" data-i18n="List">Home Section</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Human Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'human.index') active @endif"><a
-                                href="{{ route('human.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'human.create') active @endif"><a
-                                href="{{ route('human.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'about.index') active @endif"><a
+                    href="{{ route('about.index') }}"><i class="feather icon-circle"></i><span
+                    class="menu-item" data-i18n="List">About Section</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Professor Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'professor.index') active @endif"><a
-                                href="{{ route('professor.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'professor.create') active @endif"><a
-                                href="{{ route('professor.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Writter Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'writter.index') active @endif"><a
-                                href="{{ route('writter.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'writter.create') active @endif"><a
-                                href="{{ route('writter.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'section2.index') active @endif"><a
-                                href="{{ route('section2.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'section2.create') active @endif"><a
-                                href="{{ route('section2.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create User</span></a>
-                        </li> --}}
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'blog.index') active @endif"><a
+                        href="{{ route('blog.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Blog Section</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Blog Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'blog.index') active @endif"><a
-                                href="{{ route('blog.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        <li class="@if (Route::currentRouteName() == 'blog.create') active @endif"><a
-                                href="{{ route('blog.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create Blog</span></a>
-                        </li>
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'human.index') active @endif"><a
+                        href="{{ route('human.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Human Section</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="User">Footer Section</span></a>
-                    <ul class="menu-content">
-                        <li class="@if (Route::currentRouteName() == 'footer.index') active @endif"><a
-                                href="{{ route('footer.index') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        {{-- <li class="@if (Route::currentRouteName() == 'footer.create') active @endif"><a
-                                href="{{ route('footer.create') }}"><i class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="View">Create Footer</span></a>
-                        </li> --}}
-
-                    </ul>
+                <li class="@if (Route::currentRouteName() == 'professor.index') active @endif"><a
+                        href="{{ route('professor.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Professor Section</span></a>
                 </li>
+
+                <li class="@if (Route::currentRouteName() == 'section2.index') active @endif"><a
+                        href="{{ route('section2.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Section</span></a>
+                </li>
+
+                <li class="@if (Route::currentRouteName() == 'writter.index') active @endif"><a
+                        href="{{ route('writter.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Writter Section</span></a>
+                </li>
+
+
+                <li class="@if (Route::currentRouteName() == 'footer.index') active @endif"><a
+                        href="{{ route('footer.index') }}"><i class="feather icon-circle"></i><span
+                            class="menu-item" data-i18n="List">Footer Section</span></a>
+                </li>
+
+
 
 
             </ul>
@@ -357,6 +273,7 @@
     <script src="{{ asset('app-assets/vendors/js/forms/validation/jqBootstrapValidation.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/validation/form-validation.js') }}"></script>
     <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/pages/app-user.js') }}"></script>
     {{-- <script src="{{ asset('app-assets/js/scripts/editors/editor-quill.js') }}"></script> --}}
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/toastr.css') }}">

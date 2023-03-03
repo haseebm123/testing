@@ -41,6 +41,16 @@
                                                     value="{{ $data->image ?? null }}" placeholder="Image">
                                             </div>
                                         </div>
+                                           @php
+                                            $img = $data->image??null;
+                                        @endphp
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <img src='{{ asset("documents/about_section/$img") }}'
+                                                width="200px"
+                                                    alt="">
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label>Body</label>
                                             <div class="controls">

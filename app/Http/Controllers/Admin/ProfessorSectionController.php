@@ -127,6 +127,13 @@ class ProfessorSectionController extends Controller
                         ->with(['message'=>'Section delete successfully','type'=>'success']);
     }
 
+    public function delete($id)
+    {
+         ProfessorSection::find($id)->delete();
+        return redirect()->route('about.index')
+                        ->with(['message'=>'Section delete successfully','type'=>'success']);
+    }
+
     public function change_status(Request $request)
     {
         $statusChange = ProfessorSection::where('id',$request->id)->update(['status'=>$request->status]);

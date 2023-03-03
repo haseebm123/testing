@@ -31,7 +31,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- SCRIPT: CUSTOM -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    <title>Nicole-Barnes</title>
+    <title>@yield('title') | Nicole-Barnes</title>
 
 </head>
 <body>

@@ -46,14 +46,14 @@
                       </div>
                     </td>
                     <td>
-                      <a class="btn btn-info" href="{{ route('footer.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
-                       <a class="btn btn-primary" href="{{ route('footer.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
+                      <a   href="{{ route('footer.show',$item->id) }}"><span class="action-edit"><i class="feather icon-eye"></i></span></a>
+                       <a   href="{{ route('footer.edit',$item->id) }}"><span class="action-edit"><i class="feather icon-edit"></i></span></a>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <form method="post" action="{{route('footer.destroy',$item->id)}}" style="margin-top: -38px;margin-left: 150px";>
+                      {{-- <form method="post" action="{{route('footer.destroy',$item->id)}}" style="margin-top: -30px; margin-left: 10px;";>
                          @csrf
                          @method('delete')
-                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
-                       </form>
+                          <button type="submit"  onclick="return confirm('Are You Sure Want To Delete This..??')" class="btn btn-default generalsetting_admin"><span class="action-delete"><i class="feather icon-trash"></i></span></button>
+                       </form> --}}
                     </td>
                   </tr>
                   @empty
