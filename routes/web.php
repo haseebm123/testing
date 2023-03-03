@@ -101,6 +101,8 @@ Route::middleware(['auth','can:isAdmin'])->prefix('admin')->group(function()
         Route::get('dashboard', 'dashboard')->name('dashboard');
         Route::get('profile', 'profile')->name('profile');
         Route::get('change-status', 'change_status')->name('change-status');
+        route::post('profile-update','profileUpdate')->name('profile-update');
+
     });
 });
 

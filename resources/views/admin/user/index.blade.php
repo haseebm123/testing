@@ -15,7 +15,7 @@
          <div class="card">
             <div class="card-header ">
 
-             <a class="btn btn-success" href="{{ route('users.create') }}"> Add Name User</a>
+             {{-- <a class="btn btn-success float-end" href="{{ route('users.create') }}"> Add User</a> --}}
 
             </div>
             <!-- /.card-header -->
@@ -27,22 +27,24 @@
                     <th>First Name</th>
                     <th >Last Name</th>
                     <th>Email</th>
-                    <th>Profile</th>
+                    {{-- <th>Profile</th> --}}
+                    <th>Role</th>
+
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
               </thead>
-
-                @forelse ($data as $key => $user)
+                 @forelse ($data as $key => $user)
 
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><img class="round" src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></td>
+                    {{-- <td><img class="round" src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></td> --}}
 
 
+                    <td style=" text-transform: uppercase;">{{ $user->type }}</td>
                     <td>
                       <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">

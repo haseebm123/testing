@@ -88,11 +88,24 @@
                                         class="user-name text-bold-600">{{ auth()->user()->first_name }}
                                         {{ auth()->user()->last_name }}</span><span
                                         class="user-status">Available</span>
-                                </div><span><img class="round"
-                                        src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar"
-                                        height="40" width="40"></span>
+                                </div>
+                                <span>
+                                    @php $profile = auth()->user()->profile??null; @endphp
+                                    @if ($profile == null)
+                                        <img class="round"
+                                            src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}"
+                                            alt="avatar" height="40" width="40">
+                                    @else
+                                    <img class="round" src='{{ asset("documents/profile/$profile") }}' alt="users avatar"
+                                          height="40" width="40">
+                                    @endif
+                                </span>
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ route('profile') }}"><i
+                                        class="feather icon-user"></i>
+                                    Profile</a>
                                 {{-- <a class="dropdown-item" href="page-user-profile.html">
                                     <i class="feather icon-user"></i> Edit Profile</a>
                                 <a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My
@@ -131,7 +144,8 @@
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0"></h2>
                     </a></li> --}}
-                <li class="nav-item nav-toggle d-none"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
+                <li class="nav-item nav-toggle d-none"><a class="nav-link modern-nav-toggle pr-0"
+                        data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
                             class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary"
                             data-ticon="icon-disc"></i></a></li>
@@ -147,33 +161,35 @@
                     </li>
 
                 </ul> --}}
-                <li class="nav-item @if (Route::currentRouteName() == 'dashboard') active @endif"><a href="{{ route('dashboard') }}"><i class="feather icon-clipboard"></i><span class="menu-title"
-                            data-i18n="Dashboard">Dashboard</span><span
-                            class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+                <li class="nav-item @if (Route::currentRouteName() == 'dashboard') active @endif"><a
+                        href="{{ route('dashboard') }}"><i class="feather icon-clipboard"></i><span
+                            class="menu-title" data-i18n="Dashboard">Dashboard</span>
+                        {{-- <span
+                            class="badge badge badge-warning badge-pill float-right mr-2">2</span> --}}
+                    </a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'users.index') active @endif"><a
-                        href="{{ route('users.index') }}"><i class="feather icon-user"></i><span
-                            class="menu-item" data-i18n="List">User</span></a>
+                <li class="@if (Route::currentRouteName() == 'users.index') active @endif"><a href="{{ route('users.index') }}"><i
+                            class="feather icon-user"></i><span class="menu-item" data-i18n="List">User</span></a>
                 </li>
 
                 <li class="@if (Route::currentRouteName() == 'home_section.index') active @endif"><a
-                    href="{{ route('home_section.index') }}"><i class="feather icon-home"></i><span
-                    class="menu-item" data-i18n="List">Home Section</span></a>
+                        href="{{ route('home_section.index') }}"><i class="feather icon-home"></i><span
+                            class="menu-item" data-i18n="List">Home Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'about.index') active @endif"><a
-                    href="{{ route('about.index') }}"><i class="feather icon-circle"></i><span
-                    class="menu-item" data-i18n="List">About Section</span></a>
+                <li class="@if (Route::currentRouteName() == 'about.index') active @endif"><a href="{{ route('about.index') }}"><i
+                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">About
+                            Section</span></a>
                 </li>
-                <li class="@if (Route::currentRouteName() == 'blog.index') active @endif"><a
-                        href="{{ route('blog.index') }}"><i class="feather icon-circle"></i><span
-                            class="menu-item" data-i18n="List">Blog Section</span></a>
+                <li class="@if (Route::currentRouteName() == 'blog.index') active @endif"><a href="{{ route('blog.index') }}"><i
+                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Blog
+                            Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'human.index') active @endif"><a
-                        href="{{ route('human.index') }}"><i class="feather icon-circle"></i><span
-                            class="menu-item" data-i18n="List">Human Section</span></a>
+                <li class="@if (Route::currentRouteName() == 'human.index') active @endif"><a href="{{ route('human.index') }}"><i
+                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Human
+                            Section</span></a>
                 </li>
                 <li class="@if (Route::currentRouteName() == 'professor.index') active @endif"><a
                         href="{{ route('professor.index') }}"><i class="feather icon-circle"></i><span
@@ -185,15 +201,15 @@
                             class="menu-item" data-i18n="List">Section</span></a>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'writter.index') active @endif"><a
-                        href="{{ route('writter.index') }}"><i class="feather icon-circle"></i><span
-                            class="menu-item" data-i18n="List">Writter Section</span></a>
+                <li class="@if (Route::currentRouteName() == 'writter.index') active @endif"><a href="{{ route('writter.index') }}"><i
+                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Writter
+                            Section</span></a>
                 </li>
 
 
-                <li class="@if (Route::currentRouteName() == 'footer.index') active @endif"><a
-                        href="{{ route('footer.index') }}"><i class="feather icon-circle"></i><span
-                            class="menu-item" data-i18n="List">Footer Section</span></a>
+                <li class="@if (Route::currentRouteName() == 'footer.index') active @endif"><a href="{{ route('footer.index') }}"><i
+                            class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Footer
+                            Section</span></a>
                 </li>
 
 

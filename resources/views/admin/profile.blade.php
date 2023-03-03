@@ -1,147 +1,124 @@
-
 @extends('admin/layout/layout')
 
 @section('header-script')
- 
- <style type="text/css">
-    /* .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-      background-color: #007bff;
-      border-color: #006fe6;
-      color: #fff;
-    } */
-  </style>
-@endsection
+    <style type="text/css">
 
-@section('navbar-section')
-
-@endsection
-
-@section('sider-section')
+    </style>
 @endsection
 
 @section('body-section')
- <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-             <?php $profile = Auth()->user()->profile; ?>
-             <?php $email   = Auth()->user()->email; ?>
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                
-                        @if(Auth()->user()->profile)
-                        <img class="profile-user-img img-fluid img-circle"
-                        src='{{asset("documents/profile/$profile")}}'
-                        alt="User profile picture">
-                        @else
+    <section class="users-edit">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab"
+                                href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Account</span>
+                            </a>
+                        </li>
 
-                        <img class="profile-user-img img-fluid img-circle"
-                        src="{{asset('dist/img/user4-128x128.jpg"
-                        alt="User profile picture')}}"
-                        alt="User profile picture">
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                            <!-- users edit media object start -->
+                            <div class="media mb-2">
+                                <a class="mr-2 my-25" href="#">
+                                    @php $profile = auth()->user()->profile??null; @endphp
+                                    @if ($profile == null)
+                                    <img class="round"
+                                        src="{{ asset('app-assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar"
+                                        height="40" width="40">
+                                    @else
+                                    <img src='{{ asset("documents/profile/$profile") }}' alt="users avatar"
+                                        class="users-avatar-shadow rounded" height="90" width="90">
+                                    @endif
+                                </a>
+                                <div class="media-body mt-50">
+                                    <h4 class="media-heading">{{ auth()->user()->first_name }}
+                                        {{ auth()->user()->last_name }}</h4>
 
-                        @endif
-                  
+                                </div>
+                            </div>
+                            <!-- users edit media object ends -->
+                            <!-- users edit account form start -->
+                            {{-- action="{{ route('profile-update') }}" --}}
+                            <form novalidate action="{{ route('profile-update') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" name="first_name"
+                                                    placeholder="First Name" value="{{ auth()->user()->first_name }}"
+                                                    required data-validation-required-message="This  field is required">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" name="last_name"
+                                                    placeholder="Last Name" value="{{ auth()->user()->last_name }}" required
+                                                    data-validation-required-message="This  field is required">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>E-mail</label>
+                                                <input type="email" class="form-control" name="email" readonly
+                                                    placeholder="Email" value="{{ auth()->user()->email }}" required
+                                                    data-validation-required-message="This email field is required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select class="form-control" disabled="disabled" name="status" readonly>
+                                                <option value="1">Active</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Role</label>
+                                            <select class="form-control" disabled="disabled" name="type" readonly>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+
+                                        </fieldset>
+
+                                        <div class="form-group">
+                                            <label>Profile</label>
+                                            <input type="file" name="profile" class="form-control">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                        <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
+                                            Changes</button>
+                                        <button type="reset" class="btn btn-outline-warning">Reset</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <!-- users edit account form ends -->
+                        </div>
+
+
+                    </div>
                 </div>
-
-                <h3 class="profile-username text-center">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h3>
-
-                <p class="text-muted text-center">Admin</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Email</b> <a class="float-right">{{Auth()->user()->email}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Phone Number</b> <a class="float-right">{{Auth()->user()->phone_number}}</a>
-                  </li>
-                  
-                </ul>
-
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-              </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
-          </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active"  href="#settings" data-toggle="tab"> profile</a></li>
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  
-                
-
-                  <div class="tab-pane active" id="settings">
-                    <form class="form-horizontal" method="POST" action="{{url('update-profile-process')}}" enctype= multipart/form-data>
-                    <input type="hidden" name="user_id" value="{{Auth()->user()->id}}">
-                     @csrf
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
-                        <div class="col-sm-10">
-                          <input type="text" name="first_name" class="form-control" id="inputName" placeholder="First Name" value="{{Auth()->user()->first_name}}" readonly>
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Last Name</label>
-                        <div class="col-sm-10">
-                          <input type="text" name="last_name" class="form-control" id="inputLastName" placeholder="Last Name" value="{{Auth()->user()->last_name}}" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="{{Auth()->user()->email}}" readonly>
-                        </div>
-                      </div>
-                      
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Phone Number</label>
-                        <div class="col-sm-10">
-                          <input type="text" name="phone_number" class="form-control" id="inputPhone" placeholder="Phone number" value="{{Auth()->user()->phone_number}}" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <p style="float:center"><img  id="output" width="200" /></p>
-                      </div>
-
-                       <!-- <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Profile</label>
-                        <div class="col-sm-10">
-                          <input type="file" name="profile" class="form-control" id="inputprofile"onchange="loadFile(event)" >
-                        </div>
-                      </div> -->
-                      
-                      <!-- <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                      </div> -->
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 @endsection
 
 
@@ -149,21 +126,7 @@
 @endsection
 
 @section('footer-script')
+    <script>
 
-<!-- CodeMirror -->
-
-
-<script>
-
-
-
-
-var loadFile = function(event) {
-  var image = document.getElementById('output');
-  image.src = URL.createObjectURL(event.target.files[0]);
-};
-
-
-</script>
-
+    </script>
 @endsection

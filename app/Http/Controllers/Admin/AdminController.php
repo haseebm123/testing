@@ -156,6 +156,30 @@ class AdminController extends Controller
        return view('admin/dashboard');
     }
 
+    public function profile(Request $request)
+    {
+       return view('admin.profile');
+    }
+
+    public function profileUpdate(Request $request)
+   {
+         $user = User::find(auth()->user()->id);
+        $input = $request->except(['profile','_token'],$request->all());
+
+        if($request->hasFile('profile'))
+        {
+            $img = Str::random(20).$request->file('profile')->getClientOriginalName();
+            $input['profile'] = $img;
+            $request->profile->move(public_path("documents/profile/"), $img);
+        }
+
+        $user->update($input);
+
+        return redirect()->back()
+                ->with(['message'=>'Profile Update Successfully','type'=>'success']);
+   }
+
+
 
     public function change_status(Request $request)
     {
